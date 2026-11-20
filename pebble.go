@@ -154,7 +154,7 @@ func restrict(name string, file vfs.File, err error) (vfs.File, error) {
 	return file, nil
 }
 
-// restrictFiles makes the files of a database written by an earlier version 0600 as well.
+// restrictFiles makes every regular file in dir 0600, also those Pebble creates without privateFS, such as LOCK, and any left with a wider mode.
 func restrictFiles(dir string) error {
 	ents, err := os.ReadDir(dir)
 	if err != nil {

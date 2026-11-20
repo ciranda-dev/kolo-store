@@ -5,8 +5,7 @@ Everything on disk is the binary form from kolo-log: the header
 entry, its record and either its ciphertext or, once deleted, its signed
 delete marker, in an entry value of version 3. A live entry's key is stored
 on its own, 32 bytes under a key that sorts by index apart from the
-entries, so it is read and checked without the ciphertext. Versions 1 and 2,
-which held the key inside the entry value, are refused. A replica is stored
+entries, so it is read and checked without the ciphertext. A replica is stored
 the same way, without a head until an update reaches one, and its list key
 holds one byte (1) where an own log's is empty. During a catch-up a
 replica also stores a target value: the head it is filling and the

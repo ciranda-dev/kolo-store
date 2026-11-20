@@ -292,11 +292,11 @@ func loadFixture(t testing.TB, b Backend, name string) (owner []byte, id kololog
 	return owner, id
 }
 
-// TestOpenReplicaFromV017 opens a replica that kolo-store v0.1.7 stored, its keys read back, and adds keys to it.
-func TestOpenReplicaFromV017(t *testing.T) {
+// TestOpenStoredReplica opens a replica from a stored dump, reads its keys back, and adds keys to it.
+func TestOpenStoredReplica(t *testing.T) {
 	forEachBackend(t, func(t *testing.T, st storage) {
 		b := st.open(t)
-		owner, id := loadFixture(t, b, "replica-v0.1.7.txt")
+		owner, id := loadFixture(t, b, "replica.txt")
 		s := openStore(t, b)
 		r := mustOpenReplica(t, s, owner, id, nil)
 		defer r.Close()

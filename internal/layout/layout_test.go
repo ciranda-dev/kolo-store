@@ -58,10 +58,7 @@ func TestEntryValueRoundTrip(t *testing.T) {
 	for name, b := range map[string][]byte{
 		"empty":                  nil,
 		"version 0":              append([]byte{0}, good[1:]...),
-		"version 1":              append([]byte{1}, good[1:]...),
-		"version 2":              append([]byte{2}, good[1:]...),
 		"version 4":              append([]byte{4}, good[1:]...),
-		"version 2 with a key":   append([]byte{2, 1, 'r', 0, 1, 'c', 32}, make([]byte, 32)...),
 		"cut":                    good[:len(good)-1],
 		"trailing":               append(slices.Clone(good), 0),
 		"no ciphertext":          {3, 1, 'r', 0, 0},

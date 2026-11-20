@@ -76,7 +76,7 @@ func TestPebbleFilesAreOwnerOnly(t *testing.T) {
 	check("closed")
 }
 
-func TestPebbleReopenRestrictsOldFiles(t *testing.T) {
+func TestPebbleReopenRestrictsFiles(t *testing.T) {
 	dir := pebbleDir(t)
 	b, err := OpenPebble(dir)
 	if err != nil {

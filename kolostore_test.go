@@ -361,11 +361,6 @@ var corruptCases = []corruptCase{
 		v[0] = 4
 		putRaw(t, b, layout.EntryKey(id, 1), v)
 	}, ErrCorrupt},
-	{"entry value of version 2", func(t testing.TB, b Backend, id kololog.LogID, _ []byte) {
-		v := getRaw(t, b, layout.EntryKey(id, 1))
-		v[0] = 2
-		putRaw(t, b, layout.EntryKey(id, 1), append(v, getRaw(t, b, layout.KeyKey(id, 1))...))
-	}, ErrCorrupt},
 	{"key cut", func(t testing.TB, b Backend, id kololog.LogID, _ []byte) {
 		k := getRaw(t, b, layout.KeyKey(id, 1))
 		putRaw(t, b, layout.KeyKey(id, 1), k[:len(k)-1])

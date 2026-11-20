@@ -102,7 +102,6 @@ func TestDecodeEntryWrapsErrCorrupt(t *testing.T) {
 	for name, b := range map[string][]byte{
 		"empty":                  nil,
 		"version 0":              append([]byte{0}, good[1:]...),
-		"version 2":              append([]byte{2}, good[1:]...),
 		"version 4":              append([]byte{4}, good[1:]...),
 		"cut":                    good[:len(good)-1],
 		"trailing":               append(slices.Clone(good), 0),

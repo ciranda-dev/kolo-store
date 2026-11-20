@@ -25,7 +25,7 @@ const (
 	LogPrefixLen = 1 + kololog.LogIDSize
 	EntryKeyLen  = LogPrefixLen + 1 + 8
 
-	// EntryVersion is the version of the stored entry value; versions 1 and 2 are refused.
+	// EntryVersion is the version of the stored entry value; any other version is refused.
 	EntryVersion = 3
 	// KeySize is the size of a stored entry key, the whole value under its KeyKey.
 	KeySize = 32

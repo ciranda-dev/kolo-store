@@ -61,7 +61,7 @@ Guarantees, bounds and caveats of kolo-store. This page is reference material: t
 | Batch of one `Adopt` | under 2 GiB, 1 GiB on 32-bit, counted as Pebble counts a batch; `ErrTooLarge` from 2 GiB on. Half of Pebble's batch limit, since Adopt and Pebble each hold a copy |
 | Pebble batch | under 4 GiB - 1 bytes, 2 GiB - 1 on 32-bit: Pebble's `maxBatchSize`, min(MaxUint32, MaxInt) (Pebble v2.1.7 `open.go:52`, `internal/constants/constants.go:16`); `ErrTooLarge` otherwise, where Pebble itself would panic |
 | `PebbleOptions.MemTableSize` | 0 (Pebble's 4 MiB) or 1 MiB to 1 GiB; `ErrInvalidOptions` otherwise. Memory: up to twice the size |
-| Pebble file mode | 0600 for every file Pebble creates in the directory, so the entry keys stored in them are readable by the owner only; files of an earlier version are changed to 0600 at the next `OpenPebble` |
+| Pebble file mode | 0600 for every file Pebble creates in the directory, so the entry keys stored in them are readable by the owner only; `OpenPebble` also changes the files already in the directory to 0600 |
 | Store directory mode | 0700 on creation; a directory that group or others can access, that another user owns, or that is swapped while it opens returns `ErrInsecureDir` |
 
 - Permissions and owner of the store directory, and the file modes, are not checked on Windows.
