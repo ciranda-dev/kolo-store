@@ -22,7 +22,7 @@ given and scan them in bytewise order.
   Takes: section 8.2, the monitor that keeps every entry, which a stored replica follows.
   Not implemented: timestamps in heads, so heads are ordered by size only.
 - [NIST SP 800-88 Rev. 1](https://doi.org/10.6028/NIST.SP.800-88r1) (December 2014), section 2.6, Cryptographic Erase.
-  Takes: deleting by destroying a key.
+  Takes: the idea of deleting by removing a key. Not a cryptographic erase in its sense, since no key that encrypts the stored keys is destroyed.
   Not implemented: key wrapping by a master key; the key is stored in the clear next to the ciphertext, because the store trusts the node's own disk.
 - Reardon, Basin and Capkun, [SoK: Secure Data Deletion](https://doi.org/10.1109/SP.2013.28), IEEE S&P 2013.
   Takes: why a log-structured engine keeps old bytes until it compacts.
